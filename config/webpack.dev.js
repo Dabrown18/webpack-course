@@ -40,7 +40,21 @@ module.exports = {
 						loader: "extract-loader"
 					},
 					{
-						loader: "html-loader"
+						loader: "html-loader",
+						options: {
+							attrs: ["img:src"]
+						}
+					}
+				]
+			},
+			{
+				test: /\.(jpg|png|gif|svg)$/,
+				use: [
+					{
+						loader: "file-loader",
+						options: {
+							name: "images/[name]-[hash:8].[ext]"
+						}
 					}
 				]
 			}
