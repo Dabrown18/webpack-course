@@ -16,7 +16,14 @@ require("webpack-dev-middleware")(
 	config.devServer
 );
 
+/*
+	Live reloading
+ */
+const webpackHotMiddleware =
+require("webpack-hot-middleware")(compiler);
+
 server.use(webpackDevMiddleware);
+server.use(webpackHotMiddleware);
 
 /*
 	Connects Express server to the root directory.

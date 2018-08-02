@@ -1,4 +1,5 @@
-const path = require("path");
+const path    = require("path");
+const webpack = require("webpack");
 
 module.exports = {
 	entry: {
@@ -16,8 +17,9 @@ module.exports = {
 	devServer: {
 		contentBase: "dist",
 		overlay: true,  // Displays errors in browser
+		hot: true,      // Express live server
 		stats: {
-			colors: true // 
+			colors: true //
 		}
 	},
 	module: {
@@ -74,5 +76,8 @@ module.exports = {
 				]
 			}
 		]
-	}
+	},
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	]
 };
