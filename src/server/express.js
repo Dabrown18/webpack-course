@@ -3,7 +3,25 @@ import path from 'path';
 
 const server = express();
 
-const staticMiddleware = express.static("dist"); // The root of the web server
+const webpack   = require("webpack");
+const config    = require("../../config/webpack.dev");
+const compiler  = webpack(config);
+
+/*
+	Express Middleware
+ */
+const webpackDevMiddleware =
+require("webpack-dev-middleware")(
+	compiler,
+	config.devServer
+);
+
+server.use(webpackDevMiddleware);
+
+/*
+	Connects Express server to the root directory.
+ */
+const staticMiddleware = express.static("dist");
 
 server.use(staticMiddleware);
 
