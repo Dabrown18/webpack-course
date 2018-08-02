@@ -15,7 +15,10 @@ module.exports = {
 	},
 	devServer: {
 		contentBase: "dist",
-		overlay: true  // Displays errors in browser
+		overlay: true,  // Displays errors in browser
+		stats: {
+			colors: true // 
+		}
 	},
 	module: {
 		rules: [
