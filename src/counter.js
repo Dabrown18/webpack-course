@@ -4,7 +4,7 @@ import { css } from 'emotion';
 
 // React Emotion
 const Fancy = styled("h1")`
-	color: hotpink
+	color: ${ props => props.wild ? hotpink : gold }
 `;
 
 // Emotion
