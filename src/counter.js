@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'react-emotion';
 import { css } from 'emotion';
 
+// React Emotion
+const Fancy = styled("h1")`
+	color: hotpink
+`;
+
+// Emotion
 const red = "#f00";
 const className = css`
 	color: ${red}
@@ -26,7 +33,7 @@ export default class Counter extends Component {
 	render() {
 		return (
 			<div onClick={this.climb}>
-				<h1 className={className}>Count: {this.state.count}</h1>
+				<Fancy>Count: {this.state.count}</Fancy>
 			</div>
 		)
 	}
