@@ -4,7 +4,7 @@ import { css } from 'emotion';
 
 // React Emotion
 const Fancy = styled("h1")`
-	color: ${ props => props.wild ? hotpink : gold }
+	color: ${ props => props.wild ? "hotpink" : "gold" }
 `;
 
 // Emotion
@@ -31,9 +31,10 @@ export default class Counter extends Component {
 	}
 
 	render() {
+		const isWild = this.state.count % 2 === 0;
 		return (
 			<div onClick={this.climb}>
-				<Fancy>Count: {this.state.count}</Fancy>
+				<Fancy wild={isWild}>Count: {this.state.count}</Fancy>
 			</div>
 		)
 	}
