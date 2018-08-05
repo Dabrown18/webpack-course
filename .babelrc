@@ -1,0 +1,25 @@
+{
+  "presets": [
+    [
+      "env", // Installs plugins to give access to ES2017
+      {
+        "targets": {
+          "browsers": ["last 2 versions"]
+        },
+        "debug": true
+      }
+    ],
+    "babel-preset-react"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "react-hot-loader/babel",
+    [
+      "emotion",
+      {
+        "sourceMap": true,
+        "autoLabel": true
+      }
+    ]
+  ]
+}
