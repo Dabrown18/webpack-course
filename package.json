@@ -38,6 +38,8 @@
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
     "node-sass": "^4.9.2",
+    "postcss": "^7.0.2",
+    "postcss-loader": "^2.1.6",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-hot-loader": "^4.3.4",
