@@ -67,7 +67,10 @@ module.exports = {
 						loader: "style-loader"
 					},
 					{
-						loader: "css-loader"
+						loader: "css-loader",
+						query: {
+							modules: true
+						}
 					},
 					{
 						loader: "stylus-loader"
