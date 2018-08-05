@@ -4,8 +4,8 @@ import path from 'path';
 const server = express();
 
 // Heroku
-const isProd    = process.env.NODE_ENV === production
-if(isProd) {
+const isProd    = process.env.NODE_ENV === "production";
+if(!isProd) {
 
 const webpack   = require("webpack");
 const config    = require("../../config/webpack.dev");
@@ -43,5 +43,5 @@ server.use(staticMiddleware);
  */
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
-	console.log("Server is listening")
+	console.log(`Server is listening on http://localhost:${PORT}`)
 });
