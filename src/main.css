@@ -28,3 +28,9 @@ h1 {
 .counter {
 	text-decoration: underline;
 }
+
+a {
+	color: white;
+	padding: 10px 20px;
+	cursor: pointer;
+}

@@ -1,7 +1,8 @@
-const path             = require("path");
-const webpack          = require("webpack");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const path                    = require("path");
+const webpack                 = require("webpack");
+const HTMLWebpackPlugin       = require("html-webpack-plugin");
+const MiniCSSExtractPlugin    = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
@@ -112,7 +113,10 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new MiniCSSExtractPlugin(),
+		new OptimizeCssAssetsPlugin(),
+		new MiniCSSExtractPlugin({
+			filename: "[name]-[contenthash].css"
+		}),
 		new HTMLWebpackPlugin({
 			template: "./src/index.html"
 		})
