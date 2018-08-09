@@ -35,7 +35,10 @@ module.exports = {
 						loader: MiniCSSExtractPlugin.loader
 					},
 					{
-						loader: "css-loader"
+						loader: "css-loader",
+						options: {
+							minimize: true
+						}
 					}
 				]
 			},
