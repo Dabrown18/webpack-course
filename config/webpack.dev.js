@@ -5,7 +5,8 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
 	entry: {
 		main: [
-			"babel-polyfill",
+			"babel-runtime/regenerator",
+			"react-hot-loader/patch",
 			"./src/main.js"
 		]
 	},

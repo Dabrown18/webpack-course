@@ -1,6 +1,5 @@
-// require("babel-runtime/regenerator");
-// require("react-hot-loader/patch");
 require("./main.css");
 require("./nav.css");
-require("./index.html");
-require("./app");
+require("./images/Jordan_Michael.jpg");
+require("react");
+console.log(`Environment is ${process.env.NODE_ENV}`);
