@@ -4,6 +4,7 @@ const HTMLWebpackPlugin       = require("html-webpack-plugin");
 const MiniCSSExtractPlugin    = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MinifyPlugin            = require("babel-minify-webpack-plugin");
+const UglifyJSPlugin          = require("uglifyjs-webpack-plugin");
 
 module.exports = (env) => {
 	return {
@@ -126,7 +127,8 @@ module.exports = (env) => {
 					NODE_ENV: JSON.stringify(env.NODE_ENV)
 				}
 			}),
-			new MinifyPlugin()
+			//new MinifyPlugin()
+			new UglifyJSPlugin()
 		]
 	}
 };
