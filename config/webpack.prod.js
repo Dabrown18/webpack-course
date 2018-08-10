@@ -5,12 +5,12 @@ const MiniCSSExtractPlugin    = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MinifyPlugin            = require("babel-minify-webpack-plugin");
 const UglifyJSPlugin          = require("uglifyjs-webpack-plugin");
+const CompressionPlugin       = require("compression-webpack-plugin");
 
 module.exports = (env) => {
 	return {
 		entry: {
 			main: [
-				"babel-polyfill",
 				"./src/main.js"
 			]
 		},
@@ -128,7 +128,10 @@ module.exports = (env) => {
 				}
 			}),
 			//new MinifyPlugin()
-			new UglifyJSPlugin()
+			new UglifyJSPlugin(),
+			new CompressionPlugin({
+				algorithm: "gzip"
+			})
 		]
 	}
 };
