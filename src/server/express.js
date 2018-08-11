@@ -34,9 +34,11 @@ server.use(webpackHotMiddleware);
 /*
 	Connects Express server to the root directory.
  */
-const staticMiddleware = express.static("dist");
 
-server.use(staticMiddleware);
+// const staticMiddleware = express.static("dist");
+// server.use(staticMiddleware);
+const expressStaticGzip = require("express-static-gzip");
+server.use(expressStaticGzip("dist"));
 
 /*
 	Heroku Server
