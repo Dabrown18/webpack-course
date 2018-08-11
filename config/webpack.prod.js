@@ -6,6 +6,7 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MinifyPlugin            = require("babel-minify-webpack-plugin");
 const UglifyJSPlugin          = require("uglifyjs-webpack-plugin");
 const CompressionPlugin       = require("compression-webpack-plugin");
+const BrotliPlugin            = require("brotli-webpack-plugin");
 
 module.exports = (env) => {
 	return {
@@ -131,7 +132,8 @@ module.exports = (env) => {
 			new UglifyJSPlugin(),
 			new CompressionPlugin({
 				algorithm: "gzip"
-			})
+			}),
+			new BrotliPlugin()
 		]
 	}
 };
