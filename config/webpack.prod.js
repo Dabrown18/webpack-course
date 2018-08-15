@@ -58,17 +58,14 @@ module.exports = env => {
             }
           ]
         },
-         {
-            test: /\.md$/,
-            use: [
-               {
-						loader: "html-loader"
-					},
-               {
-						loader: "markdown-loader"
+			{
+				test: /\.md$/,
+				use: [
+					{
+						loader: "markdown-with-front-matter-loader"
 					}
-            ]
-         }
+				]
+			}
       ]
     },
     plugins: [
