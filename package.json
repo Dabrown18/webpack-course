@@ -27,6 +27,7 @@
     "file-loader": "*",
     "html-loader": "*",
     "html-webpack-plugin": "*",
+    "markdown-loader": "^3.0.0",
     "optimize-css-assets-webpack-plugin": "*",
     "react": "*",
     "react-dom": "*",
