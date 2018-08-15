@@ -1,41 +1,24 @@
-import React, { Component } from 'react';
-import styled from 'react-emotion';
-import { css } from 'emotion';
+import React from "react"
 
-// React Emotion
-const Fancy = styled("h1")`
-	color: ${ props => props.wild ? "hotpink" : "gold" }
-`;
+export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0
+    }
+  }
 
-// Emotion
-const red = "#f00";
-const className = css`
-	color: ${red}
-`;
+  climb() {
+    this.setState({ count: this.state.count + 1 })
+  }
 
-export default class Counter extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			count: 0
-		};
-
-		this.climb = this.climb.bind(this)
-	}
-
-	climb() {
-		this.setState(() => ({
-			count: this.state.count + 1
-		}))
-	}
-
-	render() {
-		const isWild = this.state.count % 2 === 0;
-		return (
-			<div onClick={this.climb}>
-				<Fancy wild={isWild}>Count: {this.state.count}</Fancy>
-			</div>
-		)
-	}
+  render() {
+    return (
+      <div onClick={this.climb.bind(this)}>
+        <h1 style={{ color: "black" }}>
+          {this.state.count}
+        </h1>
+      </div>
+    )
+  }
 }

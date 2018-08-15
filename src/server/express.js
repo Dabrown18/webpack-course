@@ -1,51 +1,39 @@
-import express from 'express';
-import path from 'path';
+import express from "express"
+const server = express()
+import path from "path"
 
-const server = express();
+const isProd = process.env.NODE_ENV === "production"
+if (!isProd) {
+  const webpack = require("webpack")
+  const config = require("../../config/webpack.dev.js")
+  const compiler = webpack(config)
+  require("webpack-mild-compile")(compiler)
 
-// Heroku
-const isProd    = process.env.NODE_ENV === "production";
-if(!isProd) {
+  const webpackDevMiddleware = require("webpack-dev-middleware")(
+    compiler,
+    config.devServer
+  )
 
-const webpack   = require("webpack");
-const config    = require("../../config/webpack.dev");
-const compiler  = webpack(config);
+  const webpackHotMiddlware = require("webpack-hot-middleware")(
+    compiler,
+    config.devServer
+  )
 
-/*
-	Express Middleware
- */
-const webpackDevMiddleware =
-require("webpack-dev-middleware")(
-	compiler,
-	config.devServer
-);
-
-/*
-	Live reloading
- */
-const webpackHotMiddleware =
-require("webpack-hot-middleware")(compiler);
-
-server.use(webpackDevMiddleware);
-server.use(webpackHotMiddleware);
-
+  server.use(webpackDevMiddleware)
+  server.use(webpackHotMiddlware)
+  console.log("Middleware enabled")
 }
 
-/*
-	Connects Express server to the root directory.
- */
+const expressStaticGzip = require("express-static-gzip")
+server.use(
+  expressStaticGzip("dist", {
+    enableBrotli: true
+  })
+)
 
-// const staticMiddleware = express.static("dist");
-// server.use(staticMiddleware);
-const expressStaticGzip = require("express-static-gzip");
-server.use(expressStaticGzip("dist", {
-	enableBrotli: true
-}));
-
-/*
-	Heroku Server
- */
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080
 server.listen(PORT, () => {
-	console.log(`Server is listening on http://localhost:${PORT}`)
-});
+  console.log(
+    `Server listening on http://localhost:${PORT} in ${process.env.NODE_ENV}`
+  )
+})
