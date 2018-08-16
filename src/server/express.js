@@ -1,6 +1,8 @@
 import express from "express"
 const server = express()
 import path from "path"
+import React from 'react';
+import ReactDOMServer from 'react-dom/server'
 
 const isProd = process.env.NODE_ENV === "production"
 if (!isProd) {
