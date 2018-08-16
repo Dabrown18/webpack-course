@@ -26,6 +26,11 @@ if (!isProd) {
   console.log("Middleware enabled")
 }
 
+server.get("*", (req, res) => {
+  const html = ReactDOMServer.renderToString(<div>Hello SSR!</div>);
+   res.send(html)
+});
+
 const expressStaticGzip = require("express-static-gzip")
 server.use(
   expressStaticGzip("dist", {
